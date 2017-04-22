@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">Mobile Receptivity</string>
+
+    <!--QUESTION -->
+    <string name="question0_new">0. 請問手機收到該通知（上述顯示的時間）你在做什麼活動？(eg. 上課中,通勤中,看影片中,不確定)</string>
+    <string name="question0">1. 是否已看過這個通知?</string>
+    <string name="question1">2. 當時看到此通知的狀態？</string>
+    <string name="question2">3. 當時看手機的原因為何？</string>
+    <string name="question3">4. 當此通知來時，是否有在第一時間感覺到？</string>
+    <string name="question4">5. 感覺到通知後，</string>
+    <string name="question5">6. 感覺到通知後，是否有猜測通知來源？</string>
+    <string name="question6">7. 為什麼猜不出來源？</string>
+    <string name="question7">8. 如何猜測是從哪個app?（複選）</string>
+    <string name="question8">9. 如何猜測此通知從誰而來?</string>
+    <string name="question9">10. 看了通知後，app與人是否符合猜測？</string>
+    <string name="question10">11. 感覺到通知後，決定當下觀看通知的原因為何？(複選)</string>
+    <string name="question11">12. 感覺到通知後，沒有當下觀看通知的原因為何？(複選)</string>
+    <string name="question12">13. 你覺得當時你的判斷要看或不看這個決定是否有幫助？</string>
+    <string name="question13">14. 在判斷當下, 你預期需要花多少時間處理/回應此通知？</string>
+    <string name="question14">15. 你覺得當時是否有足夠的時間處理/回應通知？</string>
+    <string name="question15">16. 是否想要在第一時間得到該通知?</string>
+
+
+
+    <!--ANSWER -->
+
+    <string name="answer0_1">是（接續回答第2-15題回答）</string>
+    <string name="answer0_2">否（至第16題）</string>
+
+
+
+    <string name="answer1_1">打開手機才看到（接續回答第3-15題回答）</string>
+    <string name="answer1_2">當時正在用手機（滑至下一頁）</string>
+    <string name="answer1_3">使用別的裝置時看到（滑至下一頁）</string>
+
+    <string name="answer2_1">想看有什麼新通知(感受到通知)</string>
+    <string name="answer2_2">想看有什麼新通知(沒感受到通知，為自己主動想看)</string>
+    <string name="answer2_3">有特定使用手機需求</string>
+    <string name="answer2_4">習慣動作，無特別使用或資訊需求</string>
+    <string name="answer2_5">意外打開手機</string>
+    <string name="answer2_6">其他</string>
+
+
+
+    <string name="answer3_1">是</string>
+    <string name="answer3_2">否（至第16題）</string>
+    <string name="answer3_3">不確定</string>
+
+
+    <string name="answer4_1">我決定馬上查看手機（接續回答，但跳過第12題）</string>
+    <string name="answer4_2">我當時已經在使用手機了（滑至下一頁）</string>
+    <string name="answer4_3">我沒有馬上理會那個通知（接續回答，但跳過第11題)</string>
+
+
+    <string name="answer5_1">是，我那時有猜測是從哪個app和哪個人來的通知（接續回答，但跳過第7題）</string>
+    <string name="answer5_2">是，我有猜測是從哪個人來的通知（接續回答，但跳過第7,8題）</string>
+    <string name="answer5_3">是，我有猜測是從特定app來的通知（接續回答，但跳過第7,9題）</string>
+    <string name="answer5_4">是，我有猜測，但猜不出來源（接續回答，但跳過第8,9,10題）</string>
+    <string name="answer5_5">否，我沒有猜測（接續回答，但跳過第7,8,9,10,13題，須填答第16題）</string>
+
+    <string name="answer6_1">該通知聲音或振動與其他app相似</string>
+    <string name="answer6_2">該通知不常見而無法猜測</string>
+    <string name="answer6_3">其他</string>
+
+
+
+
+    <string name="answer7_1">該app有特別的鈴聲</string>
+    <string name="answer7_2">該app有特別的震動</string>
+    <string name="answer7_3">最近有使用此app</string>
+    <string name="answer7_4">因為覺得是某特定的人使用該app聯繫</string>
+    <string name="answer7_5">其他</string>
+
+
+    <string name="answer8_1">與此人最近有進行對話/有互動</string>
+    <string name="answer8_2">此人通常會在這個時間傳訊息來</string>
+    <string name="answer8_3">這個時間與此人有約</string>
+    <string name="answer8_4">其他</string>
+
+
+    <string name="answer9_1">有猜測兩者，app與人皆符合猜測</string>
+    <string name="answer9_2">有猜測兩者，app符合，但人不符合猜測</string>
+    <string name="answer9_3">有猜測兩者，app不符合，但人符合猜測</string>
+    <string name="answer9_4">有猜測兩者，app與人皆不符合猜測</string>
+    <string name="answer9_5">只猜測其一，且符合猜測</string>
+    <string name="answer9_6">只猜測其一，但不符合猜測</string>
+
+
+
+
+
+    <string name="answer10_1">現在有空讀</string>
+    <string name="answer10_2">想知道是什麼通知</string>
+    <string name="answer10_3">覺得這個通知內容重要</string>
+    <string name="answer10_4">覺得這個通知傳送者重要</string>
+    <string name="answer10_5">覺得這個通知有時效性(有急迫性)</string>
+    <string name="answer10_6">其他</string>
+
+
+    <string name="answer11_1">現在沒有空讀</string>
+    <string name="answer11_2">覺得通知內容不重要</string>
+    <string name="answer11_3">覺得通知傳送者不重要</string>
+    <string name="answer11_4">覺得應該是沒有時效性的通知(沒有急迫性)</string>
+    <string name="answer11_5">怕讀了當下沒有時間處理或回應通知 (eg.可能不想讓對方感到已讀不回)</string>
+    <string name="answer11_6">其他</string>
+
+
+    <string name="answer12_1">是，因為當時確實<u>需要</u>得知該通知（因為當時的猜測幫助我看到<u>需要</u>看到的通知）</string>
+    <string name="answer12_2">是，因為當時得知該通知較有<u>幫助（也可以延後得知無妨）</u></string>
+    <string name="answer12_3">是，因為當時確實不需要得知該通知</string>
+    <string name="answer12_4">否，因為當時不需要得知該通知，但卻在當時看了</string>
+    <string name="answer12_5">否，因為當時需要得知該通知，但卻沒有在當時看</string>
+    <string name="answer12_6">以上皆非，其他</string>
+
+    <string name="answer13_1">沒有做任何預期</string>
+    <string name="answer13_2">1-15 秒</string>
+    <string name="answer13_3">16-30 秒</string>
+    <string name="answer13_4">31-60 秒</string>
+    <string name="answer13_5">1-5 分鐘</string>
+    <string name="answer13_6">6-10 分鐘</string>
+    <string name="answer13_7">11-30 分鐘</string>
+    <string name="answer13_8">超過30分鐘</string>
+    <string name="answer13_9">無法判斷</string>
+
+
+
+    <string name="answer14_1">是</string>
+    <string name="answer14_2">否</string>
+    <string name="answer14_3">不確定</string>
+    <string name="answer14_4">其他</string>
+
+    <string name="answer15_1">是，因為當時需要得知該通知，但卻沒有在當時看</string>
+    <string name="answer15_2">算是，因為當時得知該通知較有<u>幫助（也可以延後得知無妨）</u></string>
+    <string name="answer15_3">否，因為當時確實不需要得知該通知</string>
+    <string name="answer15_4">以上皆非，其他</string>
+
+
+
+
+
+
+    <!--EDITTEXT HINT-->
+
+
+    <string name="other">選擇其他，請敘述</string>
+
+    <!--FINISH-->
+
+
+    <string name="finish1">感謝你的回覆</string>
+    <string name="finish2">請按完成送出問卷</string>
+    <string name="complete">完成</string>
+
+
+
+
+</resources>
