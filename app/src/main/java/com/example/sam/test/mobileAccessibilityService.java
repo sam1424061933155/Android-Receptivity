@@ -130,13 +130,15 @@ public class mobileAccessibilityService  extends AccessibilityService {
                     Log.d("access","in null");
                     WaitList.add(info);
                 }else{
-                    WaitList.add(info);
-                    for(int i=0;i<WaitList.size();i++){
-                        UsageService.insertSQLite("accessibility",WaitList.get(i));
+                    try{
+                        WaitList.add(info);
+                        for(int i=0;i<WaitList.size();i++){
+                            UsageService.insertSQLite("accessibility",WaitList.get(i));
+                        }
+                        Log.d("access","not null");
+                    }finally {
+                        WaitList.clear();
                     }
-                    Log.d("access","not null");
-
-                    WaitList.clear();
                 }
 
             }catch (IllegalStateException e){
@@ -147,7 +149,7 @@ public class mobileAccessibilityService  extends AccessibilityService {
             }
 
         }
-        info.clear();
+        //info.clear();
 
         if(Math.abs( (getCurrentTimeInMillis()-UsageService.nowtime) / (1000*60) ) > 1 ){
             Log.d("usage","reopen usage");

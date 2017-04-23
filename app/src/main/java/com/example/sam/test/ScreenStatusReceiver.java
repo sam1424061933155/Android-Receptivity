@@ -84,13 +84,15 @@ public class ScreenStatusReceiver extends BroadcastReceiver {
                     Log.d("access","in null");
                     WaitList.add(info);
                 }else{
-                    WaitList.add(info);
-                    for(int i=0;i<WaitList.size();i++){
-                        UsageService.insertSQLite("accessibility",WaitList.get(i));
+                    try{
+                        WaitList.add(info);
+                        for(int i=0;i<WaitList.size();i++){
+                            UsageService.insertSQLite("accessibility",WaitList.get(i));
+                        }
+                        Log.d("access","not null");
+                    }finally {
+                        WaitList.clear();
                     }
-                    Log.d("access","not null");
-
-                    WaitList.clear();
                 }
 
             }catch (IllegalStateException e){
@@ -102,7 +104,7 @@ public class ScreenStatusReceiver extends BroadcastReceiver {
 
         }
             //UsageService.insertSQLite("accessibility",info);
-        info.clear();
+        //info.clear();
 
 
     }

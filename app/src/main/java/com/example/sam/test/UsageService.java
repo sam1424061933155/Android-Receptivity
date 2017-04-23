@@ -1316,7 +1316,7 @@ public class UsageService extends Service {
     }
 
 
-    public static  void insertSQLite(String table, ArrayList<String> item){
+    public static  synchronized void insertSQLite(String table, ArrayList<String> item){
         Log.d("db","size= "+item.size());
         Log.d("db","insertSQLite");
 
@@ -1327,57 +1327,63 @@ public class UsageService extends Service {
         long time_millis = getCurrentTimeInMillis();
         String time = DateFormat.format("yyyy-MM-dd HH:mm:ss z", time_millis).toString();
 
-        content.put("timeToSQLite",time);
-        if(table.equals("notification")){
-            content.put("Currenttime",item.get(20));
-            content.put("Data",toJsonObject("notification",item).toString());
-        }else if(table.equals("usage")){
-            content.put("Data",toJsonObject("usage",item).toString());
-        }else if(table.equals("questionnaire")){
-            content.put("Data",toJsonObject("questionnaire",item).toString());
-            content.put("page","NA");
-            content.put("isGenerate",time);
-            content.put("GenerateTime",String.valueOf(time_millis));
-            content.put("isOpen","NA");
-            content.put("OpenTime","NA");
-            content.put("isRespond","NA");
-            content.put("RespondTime","NA");
+        try{
+            content.put("timeToSQLite",time);
+            if(table.equals("notification")){
+                content.put("Currenttime",item.get(20));
+                content.put("Data",toJsonObject("notification",item).toString());
+            }else if(table.equals("usage")){
+                content.put("Data",toJsonObject("usage",item).toString());
+            }else if(table.equals("questionnaire")){
+                content.put("Data",toJsonObject("questionnaire",item).toString());
+                content.put("page","NA");
+                content.put("isGenerate",time);
+                content.put("GenerateTime",String.valueOf(time_millis));
+                content.put("isOpen","NA");
+                content.put("OpenTime","NA");
+                content.put("isRespond","NA");
+                content.put("RespondTime","NA");
 
-        }else if(table.equals("accessibility")){
-            content.put("Data",item.get(0));
+            }else if(table.equals("accessibility")){
+                content.put("Data",item.get(0));
 
+            }
+        }catch (IndexOutOfBoundsException e){
+            content=null;
         }
+
 
         Log.d("db","after put all");
 
         writeSystemLog(getCurrentTimeInMillis(),"usage service try to insert into SQLite " + table);
 
-        try{
+        if(content!=null){
+            try{
 
-            SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-            Log.d("db","get writeable db");
-            /*if(db ==null){
-                DatabaseManager.initializeInstance();
-                db = DatabaseManager.getInstance().openDatabase();
-            }*/
-            long result =db.insertOrThrow(table,null,content);
-            Log.d("db","insertSQLite after insert");
+                SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+                Log.d("db","get writeable db");
 
-            if(result==-1){
-                Log.d("db","insert error");
-            }else{
-                Log.d("db","insert correct");
+                long result =db.insertOrThrow(table,null,content);
+                Log.d("db","insertSQLite after insert");
+
+                if(result==-1){
+                    Log.d("db","insert error");
+                }else{
+                    Log.d("db","insert correct");
+                }
+            }catch (NullPointerException e){
+                writeSystemLog(getCurrentTimeInMillis(),"getWritableDatabase NullPointerException");
+                Log.d("db","null pointer");
+                e.printStackTrace();
+                //us.startService(usage_service);
+            }finally {
+                content.clear();
+                DatabaseManager.getInstance().closeDatabase();
             }
-        }catch (NullPointerException e){
-            writeSystemLog(getCurrentTimeInMillis(),"getWritableDatabase NullPointerException");
-            Log.d("db","null pointer");
-            e.printStackTrace();
-            //us.startService(usage_service);
-        }finally {
-            content.clear();
-            DatabaseManager.getInstance().closeDatabase();
+            writeSystemLog(getCurrentTimeInMillis(),"usage service insert into SQLite successful " +table);
+
         }
-        writeSystemLog(getCurrentTimeInMillis(),"usage service insert into SQLite successful " +table);
+
         if(table.equals("questionnaire")){
             queryid("questionnaire");
         }

@@ -429,16 +429,18 @@ public class NotificationService_2 extends NotificationListenerService {
         if(UsageService.usage_start==1){
             try{
                 if(DatabaseManager.getInstance() == null){
-                    Log.d("access","in null");
+                    Log.d("notification","in null");
                     WaitList.add(info);
                 }else{
-                    WaitList.add(info);
-                    for(int i=0;i<WaitList.size();i++){
-                        UsageService.insertSQLite("accessibility",WaitList.get(i));
+                    try{
+                        WaitList.add(info);
+                        for(int i=0;i<WaitList.size();i++){
+                            UsageService.insertSQLite("notification",WaitList.get(i));
+                        }
+                        Log.d("notification","not null");
+                    }finally {
+                        WaitList.clear();
                     }
-                    Log.d("access","not null");
-
-                    WaitList.clear();
                 }
 
             }catch (IllegalStateException e){
