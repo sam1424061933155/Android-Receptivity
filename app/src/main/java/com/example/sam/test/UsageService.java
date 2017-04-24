@@ -61,6 +61,7 @@ import java.util.TimeZone;
 import java.util.TreeMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class UsageService extends Service {
@@ -81,6 +82,7 @@ public class UsageService extends Service {
     static AlertDialog dialog=null;
     Handler handle = new Handler();
     ScheduledExecutorService service=null;
+    ScheduledFuture<?> future= null;
     static Intent usage_service=null;
     ActivityRecognition ar;
     LocationManager lm;
@@ -251,6 +253,8 @@ public class UsageService extends Service {
         ScreenStatus_filter.addAction(Intent.ACTION_SCREEN_ON);
         ScreenStatus_filter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(mScreenStatusReceiver, ScreenStatus_filter);
+        service = Executors.newScheduledThreadPool(5);
+
 
 
 
@@ -280,11 +284,12 @@ public class UsageService extends Service {
         usage_service=intent;
         Log.d("service","before service start");
 
-        if(service!=null){
-            service.shutdown();
+        if(future!=null){
+            future.cancel(true);
+
         }
-        service = Executors.newScheduledThreadPool(5);
-        service.scheduleAtFixedRate(UsageRunnable,0,5, TimeUnit.SECONDS);
+        //service = Executors.newScheduledThreadPool(5);
+        future =service.scheduleAtFixedRate(UsageRunnable,0,5, TimeUnit.SECONDS);
         Toast.makeText(UsageService.this, "收集資料開始", Toast.LENGTH_LONG).show();
 
         //dbhelper=new DBHelper(this);
